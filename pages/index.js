@@ -29,9 +29,18 @@ import {
 import factory from "../smart-contract/factory";
 import web3 from "../smart-contract/web3";
 import Campaign from "../smart-contract/campaign";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, EmailIcon } from "@chakra-ui/icons";
 import { FaHandshake } from "react-icons/fa";
-import { FcShare, FcDonate, FcMoneyTransfer } from "react-icons/fc";
+import {
+  FcAbout,
+  FcShare,
+  FcPlus,
+  FcSynchronize,
+  FcServices,
+  FcOk,
+  FcTodoList,
+  FcPrivacy,
+} from "react-icons/fc";
 
 export async function getServerSideProps(context) {
   const campaigns = await factory.methods.getDeployedCampaigns().call();
@@ -157,7 +166,7 @@ function CampaignCard({
                 <Text as="span" fontWeight={"bold"}>
                   {balance > 0
                     ? web3.utils.fromWei(balance, "ether")
-                    : "0, Become a Donor 😄"}
+                    : "0, Become a Donor "}
                 </Text>
                 <Text
                   as="span"
@@ -227,7 +236,7 @@ export default function Home({ campaigns }) {
   return (
     <div>
       <Head>
-        <title>BetterFund</title>
+        <title>RaiseHands</title>
         <meta
           name="description"
           content="Transparent Crowdfunding in Blockchain"
@@ -244,7 +253,9 @@ export default function Home({ campaigns }) {
             as="h1"
             py={4}
           >
-            Crowdfunding using the powers of <br /> Crypto & Blockchain 😄{" "}
+            Crowdfunding using the power of <br /> crypto ♦, Fintech 💱 &
+            Blockchain.📦 <br />
+            <p>Come join hands in making the world a better place! 🕊️ </p>
           </Heading>
           <NextLink href="/campaign/new">
             <Button
@@ -252,20 +263,60 @@ export default function Home({ campaigns }) {
               fontSize={"md"}
               fontWeight={600}
               color={"white"}
-              bg={"teal.400"}
+              bg={"green.400"}
               _hover={{
-                bg: "teal.300",
+                bg: "gray.300",
               }}
             >
               Create Campaign
             </Button>
           </NextLink>
         </Container>
+        <Container py={{ base: "4", md: "12" }} maxW={"7xl"} id="aboutus">
+          <HStack spacing={2}>
+            <SkeletonCircle size="4" />
+            <Heading as="h2" size="lg">
+              {<Icon as={FcAbout} w={10} h={10} />} About Us
+            </Heading>
+          </HStack>
+          <Divider marginTop="4" />
+          <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10} py={8}>
+            <Text>
+              We are RaiseHands,a fintech platform based on blockchain
+              technology created with a unified purpose towards solving the
+              issue of crowdfunding in today's time.
+            </Text>
+            <Text>
+              Conventional Crowdfunding social platforms have been enabling
+              environments for scammers and bogus donation claims. It only takes
+              a few easy steps to create a fake profile on most crowdfunding
+              sites, collect donations for sham projects and raise funds for
+              tragedy victims who will never receive them. So, how does one
+              protect both creators and donors, allowing new projects and
+              initiatives to secure funding and flourish, at no significant risk
+              to either party? This is where Blockchain comes in.
+            </Text>
+            <Text>
+              When a creator presents the initiative of a new product,
+              interested parties may choose to support the cause and secure
+              access in advance of production. Each supporter transfers the
+              required amount in a stable coin to an escrow wallet bound by a
+              smart contract. The creator can begin production when the total
+              amount in escrow reaches the target within a specified period. The
+              predetermined amount from the escrow wallet will be transferred to
+              the creator once consensus is reached. In this way, the smart
+              contract insulates donors against judgment errors from project
+              creators.
+            </Text>
+
+            <Text>Happy Crowdfunding!</Text>
+          </SimpleGrid>
+        </Container>
         <Container py={{ base: "4", md: "12" }} maxW={"7xl"}>
           <HStack spacing={2}>
             <SkeletonCircle size="4" />
             <Heading as="h2" size="lg">
-              Open Campaigns
+              Crowdfunding Campaigns available 💎
             </Heading>
           </HStack>
 
@@ -302,45 +353,73 @@ export default function Home({ campaigns }) {
           <HStack spacing={2}>
             <SkeletonCircle size="4" />
             <Heading as="h2" size="lg">
-              How BetterFund Works
+              How FundSpirit Works
             </Heading>
           </HStack>
           <Divider marginTop="4" />
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} py={8}>
             <Feature
-              icon={<Icon as={FcDonate} w={10} h={10} />}
+              icon={<Icon as={FcPlus} w={10} h={10} />}
               title={"Create a Campaign for Fundraising"}
               text={
-                "It’ll take only 2 minutes. Just enter a few details about the funds you are raising for."
+                "Please enter the details about the campaign you are creating. Make sure you post a photo and current status about the Campaign. If you are an NGO, please enter your organisation details for better visibility."
               }
             />
             <Feature
               icon={<Icon as={FcShare} w={10} h={10} />}
               title={"Share your Campaign"}
               text={
-                "All you need to do is share the Campaign with your friends, family and others. In no time, support will start pouring in."
+                " You can share your Campaign on Social Media sites like Twitter, Instagram and Facebook as well as to friends, peers and family members. Make sure to post relevant information and current status about the campaign."
               }
             />
             <Feature
-              icon={<Icon as={FcMoneyTransfer} w={10} h={10} />}
-              title={"Request and Withdraw Funds"}
+              icon={<Icon as={FcSynchronize} w={10} h={10} />}
+              title={"Requesting and Withdrawing Funds"}
               text={
-                "The funds raised can be withdrawn directly to the recipient when 50% of the contributors approve of the Withdrawal Request."
+                "The funds raised by donation can be withdrawn directly to the recipient when atleast 50% of the contributors approve of the Withdrawal Request. The creator is not the intermediary of the transfer of funds."
               }
             />
           </SimpleGrid>
-          <Heading as="h2" size="lg" mt="8">
-            For any queries raise an issue on{" "}
-            <Link
-              color="teal.500"
-              href="https://github.com/harsh242/betterfund-crowdfunding-in-blockchain/issues"
-              isExternal
-            >
-              the Github Repo <ExternalLinkIcon mx="2px" />
-            </Link>{" "}
-          </Heading>
-          <Divider marginTop="4" />
         </Container>
+        <Heading as="h2" size="lg" mt="8">
+          Steps for Crowdfunding <Icon as={FcServices} w={20} h={20} />
+        </Heading>
+        <Feature
+          icon={<Icon as={FcPlus} w={10} h={10} />}
+          text={
+            "1️⃣To participate and complete a transaction [creating your own campaign or to contribute], you first need to connect an Ethereum Wallet ♦ to the website."
+          }
+        />
+        <Feature
+          icon={<Icon as={FcPrivacy} w={10} h={10} />}
+          text={
+            "2️⃣For this you can use Metamask, a popular software cryptocurrency wallet used to access an Ethereum Wallet through a browser extension or mobile app."
+          }
+        />
+        <Feature
+          icon={<Icon as={FcTodoList} w={10} h={10} />}
+          text={
+            "3️⃣Metamask supports IOS, Android native applications along with Chrome, Firefox, Brave, and the Edge Browser.To Install it, check the link given down below."
+          }
+        />
+        <Feature
+          icon={<Icon as={FcOk} w={10} h={10} />}
+          text={
+            "4️⃣Once you have completed the steps and created a Metamask wallet, you can create and contribute to campaigns.Thats it.Get Started with Crowdfunding"
+          }
+        />
+        <Heading text={""} />
+        Follow this Link for Metamask Installation⤵️{" "}
+        <Link color="green.500" href="https://metamask.io/" isExternal>
+          <ExternalLinkIcon mx="16px" />
+        </Link>{" "}
+        <Heading as="h2" size="lg" mt="8">
+          For any Queries please send a mail{" "}
+          <Link color="green.500" href="mailto:kyremz13@gmail.com" isExternal>
+            <EmailIcon mx="2px" />
+          </Link>{" "}
+        </Heading>
+        <Divider marginTop="4" />
       </main>
     </div>
   );

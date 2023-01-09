@@ -80,7 +80,7 @@ export default function NewCampaign() {
       console.log(err);
     }
   }
-
+console.log(wallet)
   return (
     <div>
       <Head>
@@ -209,7 +209,8 @@ export default function NewCampaign() {
                         _hover={{
                           bg: "teal.300",
                         }}
-                        onClick={() => wallet.connect()}
+                        onClick={() => {wallet.connect()
+                        console.log(wallet.account)}}
                       >
                         Connect Wallet{" "}
                       </Button>

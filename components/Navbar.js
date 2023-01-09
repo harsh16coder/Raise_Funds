@@ -73,7 +73,7 @@ export default function NavBar() {
                   zIndex: -1,
                 }}
               >
-                <NextLink href="/">🤝BetterFund</NextLink>
+                <NextLink href="/">RaiseHands 🙌</NextLink>
               </Box>
             </Heading>
           </Flex>

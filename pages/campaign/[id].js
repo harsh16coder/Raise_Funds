@@ -209,7 +209,8 @@ export default function CampaignSingle({
               </Text>
               <Link
                 color="teal.500"
-                href={`https://rinkeby.etherscan.io/address/${id}`}
+                //href={`https://rinkeby.etherscan.io/address/${id}`}
+                href={`https://goerli.etherscan.io/address/${id}`}
                 isExternal
               >
                 View on Rinkeby Etherscan <ExternalLinkIcon mx="2px" />
